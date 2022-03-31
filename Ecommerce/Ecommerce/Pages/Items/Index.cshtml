@@ -1,0 +1,64 @@
+﻿@page
+@model Ecommerce.Pages.Items.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+    <a asp-page="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Item) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> @("|")
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> @("|")
+                }                
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                @if (User.IsInRole("User"))
+                {
+                    @("|") <a asp-page="./Cart" asp-route-id="@item.Id">Add to Cart</a>
+                }                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

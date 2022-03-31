@@ -1,0 +1,58 @@
+﻿@page
+@model Ecommerce.Pages.Items.CartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.myCart[0].ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.myCart[0].Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.myCart[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.myCart[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.myCart[0].Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.myCart) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @*Doesn't work*@
+                <a asp-page="./Cart" asp-route-id="@Model.Item.Id" asp-route-id="@Model.Item.Quantity">-</a> @("|")
+                @Html.DisplayFor(modelItem => item.Quantity) @("|")
+                <a asp-page="./Cart" asp-route-id="@Model.Item.Id">+</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

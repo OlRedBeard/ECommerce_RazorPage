@@ -1,6 +1,7 @@
-using Ecommerce.Data;
+﻿using Ecommerce.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
+
+builder.Services.AddDbContext<EcommerceContext>(options =>
+
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EcommerceContext")));
 
 var app = builder.Build();
 
@@ -36,5 +42,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseSession();
 
 app.Run();
