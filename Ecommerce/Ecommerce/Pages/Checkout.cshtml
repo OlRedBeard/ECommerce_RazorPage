@@ -6,81 +6,83 @@
 <h1>Checkout</h1>
 
 <form method="post" class="col-sm-6">
+    <h3>Shipping Information</h3>
     <div class="form-group row">
         <label asp-for="input.firstName" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.firstName" class="form-control" />
         </div>
-        <span asp-validation-for="input.firstName" class="text-danger offset-sm-3"></span></br>
-    </div>
+        <span asp-validation-for="input.firstName" class="text-danger offset-sm-3"></span>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.lastName" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.lastName" class="form-control" />
         </div>
-        <span asp-validation-for="input.lastName" class="text-danger offset-sm-3"></span></br>
-    </div>
+        <span asp-validation-for="input.lastName" class="text-danger offset-sm-3"></span>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.streetAddress" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <textarea asp-for="input.streetAddress" class="form-control"></textarea>
         </div>
         <span asp-validation-for="input.streetAddress" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.postalCode" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.postalCode" class="form-control" />
         </div>
         <span asp-validation-for="input.postalCode" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.province" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.province" class="form-control" />
         </div>
         <span asp-validation-for="input.province" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.country" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.country" class="form-control" />
         </div>
         <span asp-validation-for="input.country" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.eMail" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.eMail" class="form-control" />
         </div>
         <span asp-validation-for="input.eMail" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
+    <h3>Payment Information</h3>
     <div class="form-group row">
         <label asp-for="input.CreditCardNum" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.CreditCardNum" class="form-control" />
         </div>
         <span asp-validation-for="input.CreditCardNum" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.CCExp" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.CCExp" class="form-control" />
         </div>
         <span asp-validation-for="input.CCExp" class="text-danger offset-sm-3"></span></br>
-    </div>
+    </div></br>
     <div class="form-group row">
         <label asp-for="input.CVV2" class="col-sm-3 col-form-label"></label>
         <div class="col-sm-7">
             <input asp-for="input.CVV2" class="form-control" />
         </div>
         <span asp-validation-for="input.CVV2" class="text-danger offset-sm-3"></span></br>
-    </div>
-    @Model.resultInfo
+    </div></br>
     <div class="form-group row">
         <div class="col-sm-7 offset-sm-3">
             <button class="btn btn-primary" id="submit">Submit</button>
         </div>
     </div>
+    @Model.resultInfo
 </form>
 

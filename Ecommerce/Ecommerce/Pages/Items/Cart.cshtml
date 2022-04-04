@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                <a asp-page="./Cart" asp-route-id="-@Model.Item.Id">-</a>@(" ")
+                <a asp-page="./Cart" asp-route-id="-@item.Id">-</a>@(" ")
                 @Html.DisplayFor(modelItem => item.Quantity) @(" ")
-                <a asp-page="./Cart" asp-route-id="@Model.Item.Id">+</a> 
+                <a asp-page="./Cart" asp-route-id="@item.Id">+</a> 
             </td>
         </tr>
 }

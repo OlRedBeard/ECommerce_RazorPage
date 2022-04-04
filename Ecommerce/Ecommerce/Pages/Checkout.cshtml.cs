@@ -2,14 +2,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authentication;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ecommerce.Pages
 {
+    [Authorize(Roles = "User,Admin")]
+
     public class CheckoutModel : PageModel
-    {
+    {       
         [BindProperty]
         public InputModel input { get; set; }
         public string resultInfo { get; set; }
+        public string Total { get; set; }
 
         public class InputModel
         {
@@ -31,6 +35,7 @@ namespace Ecommerce.Pages
 
             [Required(ErrorMessage = "Please enter your postal code")]
             [Display(Name = "Postal Code:")]
+            [RegularExpression(@"^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$", ErrorMessage = "Please enter a valid postal code")]
             public string postalCode { get; set; }
 
             [Required(ErrorMessage = "Please enter a province")]
@@ -47,9 +52,9 @@ namespace Ecommerce.Pages
             [Display(Name = "Email:")]
             public string eMail { get; set; }
 
-            [StringLength(16, MinimumLength = 16)]
+            [StringLength(19, MinimumLength = 16)]
             [Required(ErrorMessage = "Please enter your credit card number")]
-            [RegularExpression(@"^[0-9]{16}$", ErrorMessage = "Please enter a valid credit card number (16 digits)")]
+            [RegularExpression(@"^(\d{4}[- ]){3}\d{4}|\d{16}$", ErrorMessage = "Please enter a valid credit card number (16 digits)")]
             [Display(Name = "Credit Card Number:")]
             public string CreditCardNum { get; set; }
 

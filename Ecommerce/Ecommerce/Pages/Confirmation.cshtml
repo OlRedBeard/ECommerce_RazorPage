@@ -1,6 +1,9 @@
 ﻿@page
 @model Ecommerce.Pages.ConfirmationModel
 @{
-    ViewData["Title"] = "Order Confirmation";
+    ViewData["Title"] = "Order Confirmed";
 }
 <h1>Order Confirmation</h1>
+<p>Thank you for your order, @Model.name</p>
+<p>Your order has been verified and you will receive an email when your products ship.</p>
+<a asp-page="/Index">Back to Home</a>
