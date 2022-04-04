@@ -43,16 +43,27 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @*Doesn't work*@
-                <a asp-page="./Cart" asp-route-id="@Model.Item.Id" asp-route-id="@Model.Item.Quantity">-</a> @("|")
-                @Html.DisplayFor(modelItem => item.Quantity) @("|")
+                <a asp-page="./Cart" asp-route-id="-@Model.Item.Id">-</a>@(" ")
+                @Html.DisplayFor(modelItem => item.Quantity) @(" ")
                 <a asp-page="./Cart" asp-route-id="@Model.Item.Id">+</a> 
             </td>
         </tr>
 }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>Order Total:</b></td>
+            <td><b>$@Model.total</b></td>
+        </tr>
     </tbody>
 </table>
 
+<form method="post">
+        <input type="submit" value="Checkout" class="btn btn-primary" /> |
+        <a asp-page="./Index">Continue Shopping</a>
+    </form>
 <div>
-    <a asp-page="./Index">Back to List</a>
+    
+    
 </div>

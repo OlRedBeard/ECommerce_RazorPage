@@ -14,6 +14,9 @@ namespace Ecommerce.Pages.Items
         }
 
         [BindProperty]
+        public decimal total { get; set; }
+
+        [BindProperty]
         public List<Item> myCart { get; set; }
 
         [BindProperty]
@@ -21,6 +24,8 @@ namespace Ecommerce.Pages.Items
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            bool dec = false;
+
             myCart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "itemCart");
             if (myCart == null)
                 myCart = new List<Item>();
@@ -28,22 +33,52 @@ namespace Ecommerce.Pages.Items
             if (id == null)
                 return NotFound();
 
+            if (id < 0)
+            {
+                dec = true;
+                id = id * -1;
+            }
+
             Item = await _context.Item.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Item == null)
                 return NotFound();
 
-            // This doesn't work, still just adds items repeatedly
-            if (myCart.Contains(Item))
+            bool inCart = false;
+
+            if (dec)
             {
-                myCart.Remove(Item);
-                Item.Quantity++;
-                myCart.Add(Item);
+                for(int i = 0; i < myCart.Count; i++)
+                {
+                    if (myCart[i].Id == id)
+                    {
+                        myCart[i].Quantity--;
+                        if (myCart[i].Quantity <= 0)
+                            myCart.Remove(myCart[i]);
+                    }
+                }
             }
             else
             {
-                Item.Quantity = 1;
-                myCart.Add(Item);
+                for (int i = 0; i < myCart.Count; i++)
+                {
+                    if (myCart[i].Id == id)
+                    {
+                        myCart[i].Quantity++;
+                        inCart = true;
+                    }
+                }
+
+                if (!inCart)
+                {
+                    Item.Quantity = 1;
+                    myCart.Add(Item);
+                }
+            }
+            
+            foreach(var item in myCart)
+            {
+                total += item.Price * item.Quantity;
             }
             
             SessionHelper.SetObjectAsJson(HttpContext.Session, "itemCart", myCart);
