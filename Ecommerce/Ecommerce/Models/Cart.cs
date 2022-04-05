@@ -1,4 +1,7 @@
-﻿namespace Ecommerce.Models
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+
+namespace Ecommerce.Models
 {
     public class Cart
     {
