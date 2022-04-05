@@ -14,5 +14,19 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #212529;
+    color: #fff;
+}
+
+a {
+    color: #b00600;
+}
+
+a:hover {
+    color: #b00600;
+}
+
+.form-control {
+    background-color: dimgray;
 }
