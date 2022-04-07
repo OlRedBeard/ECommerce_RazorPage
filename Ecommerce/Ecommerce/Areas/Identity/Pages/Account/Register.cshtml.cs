@@ -128,7 +128,7 @@ namespace Ecommerce.Areas.Identity.Pages.Account
                     if (!await _roleManager.RoleExistsAsync("User"))
                         await _roleManager.CreateAsync(new IdentityRole("User"));
 
-                    await _userManager.AddToRoleAsync(user, "User");  // TEMPORARY
+                    await _userManager.AddToRoleAsync(user, "Admin");  // TEMPORARY
 
                     _logger.LogInformation("User created a new account with password.");
 

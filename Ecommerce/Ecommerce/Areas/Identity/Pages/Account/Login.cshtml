@@ -10,7 +10,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2>Log in to Ghost Tokens.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -52,29 +52,18 @@
         <section>
             <h3>You can log out any time you want.</h3>
             <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            But you can never leave.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
+            <div>
+                <p>
+                    But you can never leave.
+                </p>
+                <img class="img-fluid" src="~/images/login.webp"  /></br></br>
+                <p>Just kidding, you can leave. We do want to remind you, however, that some ghosts really do not like this whole "minting the dead" 
+                    thing we're doing.
+                </p>
+                <p>Some of these ghosts have taken to haunting those who have registered for an account. The GOOD news is that ghosts are fiercly territorial 
+                    and if you purchase one of our quality spirits you can be sure that no scrub-ghost is going to end up spoopin' up your house.
+                </p>
+            </div>
         </section>
     </div>
 </div>

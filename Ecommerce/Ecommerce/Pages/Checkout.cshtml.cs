@@ -52,6 +52,11 @@ namespace Ecommerce.Pages
             [Display(Name = "Email:")]
             public string eMail { get; set; }
 
+            [Required(ErrorMessage = "Please enter your phone number")]
+            [Display(Name = "Phone:")]
+            [RegularExpression(@"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$", ErrorMessage = "Please enter phone number with area code")]
+            public string phoneNumber { get; set; }
+
             [StringLength(19, MinimumLength = 16)]
             [Required(ErrorMessage = "Please enter your credit card number")]
             [RegularExpression(@"^(\d{4}[- ]){3}\d{4}|\d{16}$", ErrorMessage = "Please enter a valid credit card number (16 digits)")]

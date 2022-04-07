@@ -26,7 +26,7 @@ namespace Ecommerce.Pages.Items
         {
             bool dec = false;
 
-            myCart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "itemCart");
+            myCart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "itemCart" + User.Identity.Name);
             if (myCart == null)
                 myCart = new List<Item>();
 
@@ -81,7 +81,7 @@ namespace Ecommerce.Pages.Items
                 total += item.Price * item.Quantity;
             }
             
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "itemCart", myCart);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "itemCart" + User.Identity.Name, myCart);
             return Page();
         }
     }
