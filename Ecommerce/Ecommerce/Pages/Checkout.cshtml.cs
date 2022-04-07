@@ -61,13 +61,13 @@ namespace Ecommerce.Pages
             [StringLength(5, MinimumLength = 4)]
             [Required(ErrorMessage = "Please enter the expiry date for the card")]
             [RegularExpression(@"^(0[1-9]|1[0-2])\/?([1-9]{2})$", ErrorMessage = "Please enter your card's expiry date (12/31)")]
-            [Display(Name = "Expiry Date")]
+            [Display(Name = "Expiry Date:")]
             public string CCExp { get; set; }
 
             [StringLength(3, MinimumLength = 3)]
             [Required(ErrorMessage = "Please enter the number on the back of your card")]
             [RegularExpression(@"^[0-9]{3}", ErrorMessage = "Please enter the 3-digit number on the back of your card")]
-            [Display (Name = "CVV2")]
+            [Display (Name = "CVV2:")]
             public string CVV2 { get; set; }
         }
 
